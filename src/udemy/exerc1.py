@@ -1,4 +1,5 @@
 import numpy as np
+import pyspark.sql.functions as sqlfun
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import lit, when
 
@@ -65,3 +66,13 @@ df = df.withColumn(
 )
 
 df.show()
+
+#
+# df = df.groupBy("Country").agg(
+#     sqlfun.avg("").alias("Contryy"), sqlfun.avg("City").alias("Cityy")
+# )
+df.show(vertical=True)
+
+print(df.columns)
+
+df.select().describe().show()
